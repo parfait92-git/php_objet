@@ -1,13 +1,18 @@
 <?php
-require_once 'classes/pdo.php';
-$nom = "Aristant";
-$myPdo = new MyPDO();
-if($myPdo->resultat != null) {
-    foreach($myPdo->resultat as $item) {  
-        echo "<br>". $item->nom."  ".$item->prenom."<br>";
+require_once "api/listClient.php";
+$apiClient = new ApiListClient();
+$data = json_decode($apiClient->run(), true);
+$arr = array();
+foreach ($data as $key => $value) {
+    for($i=0; $i < count($value); $i++) {
+        $arr = array(
+            "nom" => $value[$i]["nom"],
+            "prenom" => $value[$i]["prenom"]
+        );
+        echo "<br>" . $value[$i]["nom"] . "<br>";
     }
+    var_dump($arr);
+    
 }
-
-echo "Hello $nom";
 
 ?>
