@@ -1,12 +1,13 @@
 <?php
-require_once 'database.php';
-class MyPdo {
+require_once 'database.php'; 
+ class MyPDO {
     private $serveur;
     private $baseDeDonnees;
     private $utilisateur;
     private $motDePasse;
     private $db;
     public $resultat;
+
     public function __construct($req) {
     $this->serveur = 'localhost'; // Généralement 'localhost' pour un serveur local
     $this->baseDeDonnees = 'mycompagny';
